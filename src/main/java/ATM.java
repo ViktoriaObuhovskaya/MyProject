@@ -41,7 +41,7 @@ public class ATM {
     Scanner in = new Scanner(System.in);
 
     void operation() {
-        System.out.println("Enter the number of the operation to be performed \n1-add money, 2-withdraw money ");
+        System.out.println("Enter the number of the operation to be performed \n1-add money, 2-withdraww money ");
         int number = in.nextInt();
         System.out.print("The amount of money in the ATM ");
         balance = getNumberOfBanknotes20() * 20 + getNumberOfBanknotes50() * 50 + getNumberOfBanknotes100() * 100;
