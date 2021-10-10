@@ -14,28 +14,16 @@ class ATM {
         this.numberOfBanknotes100 = numberOfBanknotes100;
     }
 
-    public int getNumberOfBanknotes20() {
+    private int getNumberOfBanknotes20() {
         return numberOfBanknotes20;
     }
 
-    public void setNumberOfBanknotes20(int numberOfBanknotes20) {
-        this.numberOfBanknotes20 = numberOfBanknotes20;
-    }
-
-    public int getNumberOfBanknotes50() {
+    private int getNumberOfBanknotes50() {
         return numberOfBanknotes50;
     }
 
-    public void setNumberOfBanknotes50(int numberOfBanknotes50) {
-        this.numberOfBanknotes50 = numberOfBanknotes50;
-    }
-
-    public int getNumberOfBanknotes100() {
+    private int getNumberOfBanknotes100() {
         return numberOfBanknotes100;
-    }
-
-    public void setNumberOfBanknotes100(int numberOfBanknotes100) {
-        this.numberOfBanknotes100 = numberOfBanknotes100;
     }
 
     private Scanner in = new Scanner(System.in);
