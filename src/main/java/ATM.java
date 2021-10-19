@@ -56,8 +56,7 @@ class ATM {
     private void withdrawalMoney() {
         System.out.println("Enter the amount you want to withdraw ");
         int withdrawalMoney = in.nextInt();
-        if (withdrawalMoney < 20 || withdrawalMoney % 10 != 0 || withdrawalMoney == 30
-                || withdrawalMoney == balance - 30 || withdrawalMoney == balance - 10 || withdrawalMoney > balance) {
+        if (withdrawalMoney < 20 || withdrawalMoney % 10 != 0 || withdrawalMoney == 30 || withdrawalMoney == balance - 30 || withdrawalMoney == balance - 10 || withdrawalMoney > balance) {
             System.out.println(false);
             return;
         } else {
@@ -66,60 +65,54 @@ class ATM {
         }
 
         System.out.println("In denominations of what denomination the amount is issued upon withdrawal: ");
-        for (int i = 1; i < withdrawalMoney; i++) {
-            if (withdrawalMoney % 100 == 0 || withdrawalMoney % 50 == 0 || withdrawalMoney % 20 == 0 || withdrawalMoney % 100 == 10 || withdrawalMoney % 100 == 30
-                    || withdrawalMoney % 100 == 70 || withdrawalMoney % 100 == 90) {
-                i = withdrawalMoney / 100;
-                if (i <= getNumberOfBanknotes100()&& (withdrawalMoney % 100 == 10 || withdrawalMoney % 100 == 30)) {
-                    i--;
-                    if (i > 0) {
-                        System.out.println("number of denominations of 100: " + i);
-                        withdrawalMoney -= i * 100;
-                    }
-                } else if (i <= getNumberOfBanknotes100() && i > 0) {
-                    System.out.println("number of denominations of 100: " + i);
-                    withdrawalMoney -= i * 100;
-                } else if (i > getNumberOfBanknotes100()) {
-                    i = getNumberOfBanknotes100();
-                    System.out.println("number of denominations of 100: " + i);
-                    withdrawalMoney -= getNumberOfBanknotes100() * 100;
-                }
-
-                i = withdrawalMoney / 50;
-                if (i > 1 && (withdrawalMoney % 100 == 60 || withdrawalMoney % 100 == 80)) {
-                    if (i <= getNumberOfBanknotes50()) {
-                        i--;
-                        System.out.println("number of denominations of 50: " + i);
-                        withdrawalMoney -= i * 50;
-                    } else {
-                        i = getNumberOfBanknotes50() - 1;
-                        System.out.println("number of denominations of 50: " + i);
-                        withdrawalMoney -= i * 50;
-                    }
-                } else if (i <= getNumberOfBanknotes50() && i > 0 && (withdrawalMoney % 100 == 10 || withdrawalMoney % 100 == 30)) {
-                    i--;
-                    System.out.println("number of denominations of 50: " + i);
-                    withdrawalMoney -= i * 50;
-                } else if (i <= getNumberOfBanknotes50() && i > 0 && withdrawalMoney % 100 != 60 && withdrawalMoney % 100 != 80) {
-                    System.out.println("number of denominations of 50: " + i);
-                    withdrawalMoney -= i * 50;
-                } else if (i > getNumberOfBanknotes50() && (withdrawalMoney % 100 == 0 || withdrawalMoney % 100 == 20 || withdrawalMoney % 100 == 40)) {
-                    i = getNumberOfBanknotes50() - 1;
-                    System.out.println("number of denominations of 50: " + i);
-                    withdrawalMoney -= i * 50;
-                } else if (i > getNumberOfBanknotes50()) {
-                    i = getNumberOfBanknotes50();
-                    System.out.println("number of denominations of 50: " + i);
-                    withdrawalMoney -= i * 50;
-                }
-
-                i = withdrawalMoney / 20;
-                if (i <= getNumberOfBanknotes20() && i > 0) {
-                    System.out.println("number of denominations of 20: " + i);
-                }
-                return;
+        int numberOfBanknotes;
+        numberOfBanknotes = withdrawalMoney / 100;
+        if (numberOfBanknotes <= getNumberOfBanknotes100()) {
+            if (withdrawalMoney % 100 != 10 && withdrawalMoney % 100 != 30) {
+                System.out.println("number of denominations of 100: " + numberOfBanknotes);
+            } else {
+                numberOfBanknotes--;
+                System.out.println("number of denominations of 100: " + numberOfBanknotes);
             }
+        }
+        if (numberOfBanknotes > getNumberOfBanknotes100()) {
+            numberOfBanknotes = getNumberOfBanknotes100();
+            System.out.println("number of denominations of 100: " + numberOfBanknotes);
+        }
+        withdrawalMoney -= numberOfBanknotes * 100;
+
+        numberOfBanknotes = withdrawalMoney / 50;
+        if (numberOfBanknotes <= getNumberOfBanknotes50()) {
+            if (withdrawalMoney % 100 == 10 || withdrawalMoney % 100 == 30 || withdrawalMoney % 100 == 60 || withdrawalMoney % 100 == 80) {
+                numberOfBanknotes--;
+                System.out.println("number of denominations of 50: " + numberOfBanknotes);
+            } else {
+                System.out.println("number of denominations of 50: " + numberOfBanknotes);
+            }
+        }
+        if (numberOfBanknotes > getNumberOfBanknotes50()) {
+            if (withdrawalMoney % 100 != 10 && withdrawalMoney % 100 != 30 && withdrawalMoney % 100 != 50 && withdrawalMoney % 100 != 70 && withdrawalMoney % 100 != 90) {
+                numberOfBanknotes = getNumberOfBanknotes50() - 1;
+                System.out.println("number of denominations of 50: " + numberOfBanknotes);
+            } else {
+                numberOfBanknotes = getNumberOfBanknotes50();
+                System.out.println("number of denominations of 50: " + numberOfBanknotes);
+            }
+        }
+        withdrawalMoney -= numberOfBanknotes * 50;
+
+        numberOfBanknotes = withdrawalMoney / 20;
+        if (numberOfBanknotes <= getNumberOfBanknotes20()) {
+            System.out.println("number of denominations of 20: " + numberOfBanknotes);
         }
     }
 }
+
+
+
+
+
+
+
+
 
